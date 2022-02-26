@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.geekssampleapp.model.FeedResponse.Item" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_15"
+        android:elevation="@dimen/margin_5"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/margin_10">
+
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_10"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginEnd="@dimen/margin_5"
+                android:layout_toStartOf="@+id/img"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{data.title}"
+                    android:textStyle="bold"
+                    android:maxLines="3"
+                    android:textSize="@dimen/size_18"
+                    tools:text=""
+                    android:textColor="@color/title_color" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:background="@color/color_line"
+                    />
+
+                <TextView
+                    android:id="@+id/headerDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/viewLine"
+                    android:layout_marginBottom="@dimen/margin_5"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:text="@{data.pubDate}"
+                    android:textColor="@color/headertext"
+                    android:textStyle="bold"
+                    tools:text="Jan 7, 2021 07;13 AM" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="110dp"
+                android:layout_height="120dp"
+                android:layout_alignParentEnd="true"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/placeholder" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

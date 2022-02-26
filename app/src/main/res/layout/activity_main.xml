@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.example.geekssampleapp.model.FeedResponse" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_15"
+            android:elevation="@dimen/margin_5"
+            app:cardBackgroundColor="@color/white"
+            android:visibility="@{data==null || data.feed==null?View.GONE:View.VISIBLE}"
+            app:cardCornerRadius="@dimen/margin_10">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/headerImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/placeholder" />
+
+                <TextView
+                    android:id="@+id/headerText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/headerImage"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_10"
+                    android:maxLines="3"
+                    android:text="@{data.Feed.title}"
+                    android:textColor="@color/title_color"
+                    android:textSize="@dimen/size_20"
+                    android:textStyle="bold"
+                    tools:text="dgashgdjhasgdjhasg" />
+
+                <View
+                    android:id="@+id/viewLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/headerText"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_10"
+                    android:background="@color/color_line" />
+
+                <TextView
+                    android:id="@+id/headerDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/viewLine"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_10"
+                    android:paddingBottom="@dimen/margin_10"
+                    android:text="Jan 7, 2021 07;13 AM"
+                    android:textColor="@color/headertext"
+                    android:textStyle="bold"
+                    tools:text="Jan 7, 2021 07;13 AM" />
+
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_feed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{loading?View.VISIBLE:View.GONE}" />
+
+    </LinearLayout>
+</layout>
